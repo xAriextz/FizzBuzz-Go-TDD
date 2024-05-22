@@ -4,66 +4,32 @@ import (
 	"testing"
 )
 
-func TestFizzBuzzReturningTheNumberItself(t *testing.T) {
-	parameters := []struct {
+func TestFizzBuzz(t *testing.T) {
+	tests := []struct {
+		name     string
 		input    int
 		expected string
 	}{
-		{1, "1"}, {2, "2"}, {4, "4"},
+		{"NumberItself1", 1, "1"},
+		{"NumberItself2", 2, "2"},
+		{"NumberItself4", 4, "4"},
+		{"MultipleOf3_3", 3, "Fizz"},
+		{"MultipleOf3_9", 9, "Fizz"},
+		{"MultipleOf3_99", 99, "Fizz"},
+		{"MultipleOf5_5", 5, "Buzz"},
+		{"MultipleOf5_10", 10, "Buzz"},
+		{"MultipleOf5_100", 100, "Buzz"},
+		{"MultipleOf3And5_15", 15, "FizzBuzz"},
+		{"MultipleOf3And5_30", 30, "FizzBuzz"},
+		{"MultipleOf3And5_60", 60, "FizzBuzz"},
 	}
 
-	for i := range parameters {
-		result := FizzBuzz(parameters[i].input)
-		if result != parameters[i].expected {
-			t.Errorf("FizzBuzz() returned %s, expected %s", result, parameters[i].expected)
-		}
-	}
-}
-
-func TestMultiplesOf3(t *testing.T) {
-	parameters := []struct {
-		input    int
-		expected string
-	}{
-		{3, "Fizz"}, {9, "Fizz"}, {99, "Fizz"},
-	}
-
-	for i := range parameters {
-		result := FizzBuzz(parameters[i].input)
-		if result != parameters[i].expected {
-			t.Errorf("FizzBuzz() returned %s, expected %s", result, parameters[i].expected)
-		}
-	}
-}
-
-func TestMultiplesOf5(t *testing.T) {
-	parameters := []struct {
-		input    int
-		expected string
-	}{
-		{5, "Buzz"}, {10, "Buzz"}, {100, "Buzz"},
-	}
-
-	for i := range parameters {
-		result := FizzBuzz(parameters[i].input)
-		if result != parameters[i].expected {
-			t.Errorf("FizzBuzz() returned %s, expected %s", result, parameters[i].expected)
-		}
-	}
-}
-
-func TestMultiplesOf3And5(t *testing.T) {
-	parameters := []struct {
-		input    int
-		expected string
-	}{
-		{15, "FizzBuzz"}, {30, "FizzBuzz"}, {60, "FizzBuzz"},
-	}
-
-	for i := range parameters {
-		result := FizzBuzz(parameters[i].input)
-		if result != parameters[i].expected {
-			t.Errorf("FizzBuzz() returned %s, expected %s", result, parameters[i].expected)
-		}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := FizzBuzz(tt.input)
+			if result != tt.expected {
+				t.Errorf("FizzBuzz(%d) returned %s, expected %s", tt.input, result, tt.expected)
+			}
+		})
 	}
 }

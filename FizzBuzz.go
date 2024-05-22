@@ -1,5 +1,10 @@
 package fizzbuzz
 
-func FizzBuzz(inputNumber int) int {
-	return inputNumber
+import "strconv"
+
+func FizzBuzz(inputNumber int) string {
+	if inputNumber%3 == 0 {
+		return "Fizz"
+	}
+	return strconv.Itoa(inputNumber)
 }

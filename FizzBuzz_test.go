@@ -20,23 +20,50 @@ func TestFizzBuzzReturningTheNumberItself(t *testing.T) {
 	}
 }
 
-func TestNumber3(t *testing.T) {
-	result := FizzBuzz(3)
-	if result != "Fizz" {
-		t.Errorf("FizzBuzz(3) returned %s, expected %s", result, "Fizz")
+func TestMultiplesOf3(t *testing.T) {
+	parameters := []struct {
+		input    int
+		expected string
+	}{
+		{3, "Fizz"}, {9, "Fizz"}, {99, "Fizz"},
+	}
+
+	for i := range parameters {
+		result := FizzBuzz(parameters[i].input)
+		if result != parameters[i].expected {
+			t.Errorf("FizzBuzz() returned %s, expected %s", result, parameters[i].expected)
+		}
 	}
 }
 
-func TestNumber5(t *testing.T) {
-	result := FizzBuzz(5)
-	if result != "Buzz" {
-		t.Errorf("FizzBuzz(5) returned %s, expected %s", result, "Buzz")
+func TestMultiplesOf5(t *testing.T) {
+	parameters := []struct {
+		input    int
+		expected string
+	}{
+		{5, "Buzz"}, {10, "Buzz"}, {100, "Buzz"},
+	}
+
+	for i := range parameters {
+		result := FizzBuzz(parameters[i].input)
+		if result != parameters[i].expected {
+			t.Errorf("FizzBuzz() returned %s, expected %s", result, parameters[i].expected)
+		}
 	}
 }
 
-func TestNumber15(t *testing.T) {
-	result := FizzBuzz(15)
-	if result != "FizzBuzz" {
-		t.Errorf("FizzBuzz(15) returned %s, expected %s", result, "FizzBuzz")
+func TestMultiplesOf3And5(t *testing.T) {
+	parameters := []struct {
+		input    int
+		expected string
+	}{
+		{15, "FizzBuzz"}, {30, "FizzBuzz"}, {60, "FizzBuzz"},
+	}
+
+	for i := range parameters {
+		result := FizzBuzz(parameters[i].input)
+		if result != parameters[i].expected {
+			t.Errorf("FizzBuzz() returned %s, expected %s", result, parameters[i].expected)
+		}
 	}
 }

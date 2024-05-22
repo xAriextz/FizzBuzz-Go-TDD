@@ -26,3 +26,10 @@ func TestNumber3(t *testing.T) {
 		t.Errorf("FizzBuzz(3) returned %s, expected %s", result, "Fizz")
 	}
 }
+
+func TestNumber5(t *testing.T) {
+	result := FizzBuzz(5)
+	if result != "Buzz" {
+		t.Errorf("FizzBuzz(5) returned %s, expected %s", result, "Buzz")
+	}
+}

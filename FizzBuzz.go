@@ -3,11 +3,15 @@ package fizzbuzz
 import "strconv"
 
 func FizzBuzz(inputNumber int) string {
+	outputWord := ""
 	if inputNumber%3 == 0 {
-		return "Fizz"
+		outputWord += "Fizz"
 	}
 	if inputNumber%5 == 0 {
-		return "Buzz"
+		outputWord += "Buzz"
+	}
+	if outputWord != "" {
+		return outputWord
 	}
 	return strconv.Itoa(inputNumber)
 }
